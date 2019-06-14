@@ -4,7 +4,7 @@
 			<el-row :gutter="20" type="flex">
 				<el-col :span="8">
 					<div class="title">
-						留言板
+						合同链
 					</div>
 				</el-col>
 
@@ -20,7 +20,7 @@
 							</el-col>
 							<el-col class="refresh-bottom"></el-col>
 							<el-col class="new-bottom">
-								<el-button icon="el-icon-edit" @click="dialogFormVisible = true" type="primary" round> 新建留言 </el-button>
+								<el-button icon="el-icon-edit" @click="dialogFormVisible = true" type="primary" round> 创建合同 </el-button>
 							</el-col>
 						</el-row>
 					</div>
@@ -30,9 +30,9 @@
 		</div>
 
 		<el-table :data="tableData" style="width: 100%" @row-click="handleRowClick">
-			<el-table-column prop="createDate" label="发布时间">
+			<el-table-column prop="createDate" label="创建时间">
 			</el-table-column>
-			<el-table-column prop="author" label="留言者">
+			<el-table-column prop="author" label="创建者">
 			</el-table-column>
 			<el-table-column prop="title" label="标题">
 			</el-table-column>
@@ -46,15 +46,16 @@
 		 @current-change="handleCurrentChange">
 		</el-pagination>
 
-		<el-dialog title="留言信息" :visible.sync="dialogFormVisible">
+		<el-dialog title="合同信息" :visible.sync="dialogFormVisible">
 			<el-form :model="form">
-				<el-form-item label="留言标题">
-					<el-input type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="请输入留言标题" v-model="form.title">
+				<el-form-item label="合同标题">
+					<el-input type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="请输入合同标题" v-model="form.title">
 					</el-input>
 				</el-form-item>
-				<el-form-item label="留言内容">
-					<el-input type="textarea" :autosize="{ minRows: 2, maxRows: 10}" placeholder="请输入留言内容" v-model="form.content">
-					</el-input>
+				<el-form-item label="合同内容">
+					<mavon-editor v-model="form.content"/>
+					<!-- <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 10}" placeholder="请输入合同内容" v-model="form.content">
+					</el-input> -->
 				</el-form-item>
 			</el-form>
 			<div slot="footer" class="dialog-footer">
@@ -253,7 +254,7 @@
 					.then(res => {
 						if (res.data === 1) {
 							this.dialogFormVisible = false
-							this.$alert('您的留言已发布', '成功', {
+							this.$alert('您的合同已发布', '成功', {
 								confirmButtonText: '确定',
 							})
 							this.form.name = ''

@@ -33,7 +33,7 @@
 					</el-row>
 				</div>
 
-				<div class="text item">
+				<div class="text_item">
 					{{ content }}
 				</div>
 				<div class="grid-content">
@@ -115,6 +115,12 @@
 		font: "agency fb";
 		font-size: 19px;
 	}
+	.text_item{
+		font: "agency fb";
+		font-size: 18px;
+		text-align: left;
+		line-height: 2
+	}
 </style>
 
 <script>
@@ -150,31 +156,17 @@
 					.then(successResponse => {
 						this.responseResult = JSON.stringify(successResponse.data)
 						if (successResponse.data.code === 200) {
-							alert("点赞成功")
-						} else if (successResponse.data.code === 400) {
-							alert("已点赞过该留言")
+							alert("签署成功")
+						} else if (successResponse.data.code === 201) {
+							alert("已签署过该合约")
+						}else if (successResponse.data.code === 400) {
+							alert("非法操作")
 						}
+						location.reload();
 					})
+					
 					.catch(failResponse => {})
-
 			},
-// 			like() {
-// 				this.$axios
-// 					.post('/addLike', {
-// 						user_name: this.LikeInfoVo.user_name,
-// 						message_id: this.LikeInfoVo.message_id,
-// 					})
-// 					.then(successResponse => {
-// 						this.responseResult = JSON.stringify(successResponse.data)
-// 						if (successResponse.data.code === 200) {
-// 							alert("点赞成功")
-// 						} else if (successResponse.data.code === 400) {
-// 							alert("已点赞过该留言")
-// 						}
-// 					})
-// 					.catch(failResponse => {})
-// 
-// 			},
 			getMessageDetail() {
 				this.$axios
 					.get(`/getMessage/${this.$route.params.id}`)
@@ -184,8 +176,8 @@
 						this.content = successResponse.data.content;
 						this.partyA = successResponse.data.partyA;
 						this.partyB = successResponse.data.partyB;
-						this.value1 = successResponse.data.value1;
-						this.value2 = successResponse.data.value2;
+						this.value1 = successResponse.data.pAsigned;
+						this.value2 = successResponse.data.pBsigned;
 					})
 					.catch(function(error) {
 						console.log(error);

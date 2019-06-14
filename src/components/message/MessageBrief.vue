@@ -142,12 +142,14 @@
 						this.title = successResponse.data.title;
 						this.partyA = successResponse.data.partyA;
 						this.partyB = successResponse.data.partyB;
-						this.value1 = successResponse.data.value1;
-						this.value2 = successResponse.data.value2;
+					
+						this.value1 = successResponse.data.pAsigned;
+						this.value2 = successResponse.data.pBsigned;
 					})
 					.catch(function(error) {
 						console.log(error);
 					})
+					
 			},
 			handleClickReturn() {
 				this.$router.push({

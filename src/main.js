@@ -5,8 +5,10 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import App from './App'
 import router from './router'
-
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 Vue.use(ElementUI)
+Vue.use(mavonEditor)
 // 引用axios，并设置基础URL为后端服务api地址
 var axios = require('axios')
 // axios.defaults.baseURL = 'http://62.234.157.209:8000'
