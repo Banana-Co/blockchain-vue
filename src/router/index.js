@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import MessageFlow from '@/components/message/MessageFlow'
 import MessageDetail from '@/components/message/MessageDetail'
+import MessageBrief from '@/components/message/MessageBrief'
 import login from '@/components/manage/login.vue'
 import index from '@/components/home/index.vue'
 import register from '@/components/manage/register.vue'
@@ -25,6 +26,11 @@ export default new Router({
       name: MessageDetail,
       component: MessageDetail
     },
+		{
+		  path: '/messageBrief/:id',
+		  name: MessageBrief,
+		  component: MessageBrief
+		},
     {
       path: '/index',
       name: 'index',

@@ -48,11 +48,11 @@
 
 		<el-dialog title="留言信息" :visible.sync="dialogFormVisible">
 			<el-form :model="form">
-				<el-form-item label="留言标题" >
+				<el-form-item label="留言标题">
 					<el-input type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="请输入留言标题" v-model="form.title">
 					</el-input>
 				</el-form-item>
-				<el-form-item label="留言内容" >
+				<el-form-item label="留言内容">
 					<el-input type="textarea" :autosize="{ minRows: 2, maxRows: 10}" placeholder="请输入留言内容" v-model="form.content">
 					</el-input>
 				</el-form-item>
@@ -61,16 +61,16 @@
 				<el-button @click="dialogFormVisible = false">关 闭</el-button>
 				<el-button type="primary" @click="addMessage" :disabled="saveButtonDisabled">发 布</el-button>
 			</div>
-			<el-select v-model="form.value1" clearable placeholder="甲方" >
-				<el-option v-for="item in options1" :key="item.user_name" :label="item.user_name" :value="item.user_name" >
+			<el-select v-model="form.value1" clearable placeholder="甲方">
+				<el-option v-for="item in options1" :key="item.user_name" :label="item.user_name" :value="item.user_name">
 				</el-option>
 			</el-select>
-			<el-select v-model="form.value2" clearable placeholder="乙方" >
-				<el-option v-for="item in options2" :key="item.user_name" :label="item.user_name" :value="item.user_name" >
+			<el-select v-model="form.value2" clearable placeholder="乙方">
+				<el-option v-for="item in options2" :key="item.user_name" :label="item.user_name" :value="item.user_name">
 				</el-option>
 			</el-select>
 		</el-dialog>
-
+		
 	</div>
 </template>
 
@@ -198,11 +198,11 @@
 			if (uname == "") {
 				this.$router.replace('/')
 			}
-			this.$axios.get('/user').then((res)=>{
-			    this.options1 = res.data
+			this.$axios.get('/user').then((res) => {
+				this.options1 = res.data
 			})
-			this.$axios.get('/user').then((res)=>{
-			    this.options2 = res.data
+			this.$axios.get('/user').then((res) => {
+				this.options2 = res.data
 			})
 		},
 		methods: {
@@ -247,8 +247,8 @@
 						author: this.form.author,
 						title: this.form.title,
 						content: this.form.content,
-						partyA:this.form.value1,
-						partyB:this.form.value2
+						partyA: this.form.value1,
+						partyB: this.form.value2
 					})
 					.then(res => {
 						if (res.data === 1) {
@@ -259,8 +259,8 @@
 							this.form.name = ''
 							this.form.title = ''
 							this.form.content = ''
-							this.value1=''
-							this.value2=''
+							this.value1 = ''
+							this.value2 = ''
 							this.getMessagePage();
 						} else {
 							this.$alert('标题内容不能为空')
@@ -271,9 +271,15 @@
 					})
 			},
 			handleRowClick: function(row) {
-				this.$router.push({
-					path: `messageDetail/${row.id}`
-				})
+				if(row.partyA==this.form.author||row.partyB==this.form.author){
+					this.$router.push({
+						path: `messageDetail/${row.id}`
+					})
+				}else{
+					this.$router.push({
+						path: `messageBrief/${row.id}`
+					})
+				}
 			}
 		},
 		created: function() {
