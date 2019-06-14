@@ -36,8 +36,6 @@
 			</el-table-column>
 			<el-table-column prop="title" label="标题">
 			</el-table-column>
-			<el-table-column prop="like_number" label="点赞量">
-			</el-table-column>
 			<el-table-column prop="partyA" label="甲方">
 			</el-table-column>
 			<el-table-column prop="partyB" label="乙方">
@@ -202,11 +200,9 @@
 			}
 			this.$axios.get('/user').then((res)=>{
 			    this.options1 = res.data
-			    console.log(res)
 			})
 			this.$axios.get('/user').then((res)=>{
 			    this.options2 = res.data
-			    console.log(res)
 			})
 		},
 		methods: {
@@ -246,8 +242,6 @@
 					})
 			},
 			addMessage() {
-				console.log(this.form.value1)
-				console.log(this.form.value2)
 				this.$axios
 					.post('/addMessage', {
 						author: this.form.author,
