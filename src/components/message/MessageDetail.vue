@@ -37,7 +37,7 @@
 					{{ content }}
 				</div>
 				<div class="grid-content">
-					<el-button @click="like"> 签署 </el-button>
+					<el-button @click="sign"> 签署 </el-button>
 				</div>
 			</el-card>
 
@@ -129,7 +129,7 @@
 			return {
 				title: '',
 				content: '',
-				LikeInfoVo: {
+				signInfoVo: {
 					user_name: getCookie('username'),
 					message_id: this.$route.params.id
 				},
@@ -141,12 +141,11 @@
 		},
 
 		methods: {
-
-			like() {
+			sign() {
 				this.$axios
-					.post('/addLike', {
-						user_name: this.LikeInfoVo.user_name,
-						message_id: this.LikeInfoVo.message_id,
+					.post('/sign', {
+						user_name: this.signInfoVo.user_name,
+						message_id: this.signInfoVo.message_id,
 					})
 					.then(successResponse => {
 						this.responseResult = JSON.stringify(successResponse.data)
@@ -159,6 +158,23 @@
 					.catch(failResponse => {})
 
 			},
+// 			like() {
+// 				this.$axios
+// 					.post('/addLike', {
+// 						user_name: this.LikeInfoVo.user_name,
+// 						message_id: this.LikeInfoVo.message_id,
+// 					})
+// 					.then(successResponse => {
+// 						this.responseResult = JSON.stringify(successResponse.data)
+// 						if (successResponse.data.code === 200) {
+// 							alert("点赞成功")
+// 						} else if (successResponse.data.code === 400) {
+// 							alert("已点赞过该留言")
+// 						}
+// 					})
+// 					.catch(failResponse => {})
+// 
+// 			},
 			getMessageDetail() {
 				this.$axios
 					.get(`/getMessage/${this.$route.params.id}`)
