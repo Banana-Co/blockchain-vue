@@ -35,7 +35,6 @@
 
 				<div >
 					<mavon-editor  v-model="content" :subfield="false" :defaultOpen="defaultData" :toolbarsFlag="false" :boxShadow="false" @change="changeData" />
-					<!-- {{ content }} -->
 				</div>
 				<div class="grid-content">
 					<el-button @click="sign"> 签署 </el-button>
