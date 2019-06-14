@@ -53,7 +53,8 @@
 					</el-input>
 				</el-form-item>
 				<el-form-item label="合同内容">
-					<mavon-editor v-model="form.content"/>
+					<br />
+				<mavon-editor v-model="form.content"/>
 					<!-- <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 10}" placeholder="请输入合同内容" v-model="form.content">
 					</el-input> -->
 				</el-form-item>

@@ -33,8 +33,9 @@
 					</el-row>
 				</div>
 
-				<div class="text_item">
-					{{ content }}
+				<div >
+					<mavon-editor  v-model="content" :subfield="false" :defaultOpen="defaultData" :toolbarsFlag="false" :boxShadow="false" @change="changeData" />
+					<!-- {{ content }} -->
 				</div>
 				<div class="grid-content">
 					<el-button @click="sign"> 签署 </el-button>
@@ -121,6 +122,7 @@
 		text-align: left;
 		line-height: 2
 	}
+	
 </style>
 
 <script>
@@ -142,7 +144,8 @@
 				partyA: '',
 				partyB: '',
 				value1:false,
-				value2:false
+				value2:false,
+				defaultData: "preview"
 			}
 		},
 
@@ -173,7 +176,7 @@
 					.then(successResponse => {
 						this.responseResult = JSON.stringify(successResponse.data);
 						this.title = successResponse.data.title;
-						this.content = successResponse.data.content;
+						this.content =successResponse.data.content;
 						this.partyA = successResponse.data.partyA;
 						this.partyB = successResponse.data.partyB;
 						this.value1 = successResponse.data.pAsigned;
