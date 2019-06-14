@@ -168,6 +168,8 @@
 						this.content = successResponse.data.content;
 						this.partyA = successResponse.data.partyA;
 						this.partyB = successResponse.data.partyB;
+						this.value1 = successResponse.data.value1;
+						this.value2 = successResponse.data.value2;
 					})
 					.catch(function(error) {
 						console.log(error);
