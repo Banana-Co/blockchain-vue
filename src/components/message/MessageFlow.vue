@@ -46,8 +46,8 @@
 		 @current-change="handleCurrentChange">
 		</el-pagination>
 
-		<el-dialog title="合同信息" :visible.sync="dialogFormVisible" width="70%">
-			模板：<el-select v-model="tem" clearable filterable placeholder="请选择" @change="importModel(tem)" >
+		<el-dialog title="合同信息" :visible.sync="dialogFormVisible" width="90%">
+			模板：<el-select v-model="tem" clearable filterable placeholder="选择模板" @change="importModel(tem)">
 				<el-option v-for="item in options3" :key="item.value" :label="item.label" :value="item.value">
 				</el-option>
 			</el-select>
@@ -73,7 +73,7 @@
 				<el-option v-for="item in options2" :key="item.user_name" :label="item.user_name" :value="item.user_name" :disabled="item.disabled">
 				</el-option>
 			</el-select>
-			
+
 		</el-dialog>
 
 	</div>
@@ -217,9 +217,8 @@
 				}],
 				tem: ''
 			}
-		}
-	,
-	mounted() {
+		},
+		mounted() {
 			/*页面挂载获取保存的cookie值，渲染到页面上*/
 			let uname = getCookie('username')
 			this.form.author = uname
@@ -235,32 +234,32 @@
 			})
 		},
 		methods: {
-			disable1(value){
+			disable1(value) {
 				this.options1.forEach(item => {
-					item.disabled=false;
-					if (item.user_name==value) {
-						item.disabled=true;
+					item.disabled = false;
+					if (item.user_name == value) {
+						item.disabled = true;
 					}
 				})
 			},
-			disable2(value){
+			disable2(value) {
 				this.options2.forEach(item => {
-					item.disabled=false;
-					if (item.user_name==value) {
-						item.disabled=true;
+					item.disabled = false;
+					if (item.user_name == value) {
+						item.disabled = true;
 					}
 				})
 			},
-			importModel(id){
-				if(id==''){
-					id=0;
+			importModel(id) {
+				if (id == '') {
+					id = 0;
 				}
 				this.$axios
 					.get(`/getModel/${id}`)
 					.then(successResponse => {
 						this.responseResult = JSON.stringify(successResponse.data);
 						this.form.title = successResponse.data.title;
-						this.form.content =successResponse.data.content;
+						this.form.content = successResponse.data.content;
 					})
 					.catch(function(error) {
 						console.log(error);
