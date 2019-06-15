@@ -117,10 +117,6 @@
 		width: 320px;
 	}
 
-	.wrap.p {
-		color: red;
-	}
-
 	span {
 		cursor: pointer;
 	}

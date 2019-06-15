@@ -86,9 +86,6 @@
 		width: 320px;
 	}
 
-	.wrap.p {
-		color: red;
-	}
 
 
 	input {
