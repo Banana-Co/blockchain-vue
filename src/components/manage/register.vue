@@ -11,7 +11,7 @@
 		<div class="grid-content"><br /><br /><br /><br /><br /><br /><br /></div>
 		<center>
 			<el-card class="login-card">
-				<p v-show="showTishi">{{tishi}}</p>
+				<p v-show="showTishi" class="tishiText">{{tishi}}</p>
 				<el-input type="text" v-model="loginInfoVo.username" placeholder="请输入用户名"></el-input>
 				<el-input type="password" v-model="loginInfoVo.password" placeholder="请输入6~20位密码"></el-input>
 				<br />
@@ -115,6 +115,10 @@
 
 	.login-card {
 		width: 320px;
+	}
+
+	.tishiText {
+		color: red;
 	}
 
 	span {

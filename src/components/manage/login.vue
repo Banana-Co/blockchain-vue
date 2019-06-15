@@ -2,7 +2,7 @@
 	<div class="wrap">
 		<div class="grid-content"><br/><br/><br/><br/><br/><br/><br/></div>
 		<center><el-card class="login-card">
-			<p v-show="showTishi">{{tishi}}</p>
+			<p v-show="showTishi" class="tishiText">{{tishi}}</p>
 			<el-input type="text" v-model="loginInfoVo.username" placeholder="请输入用户名"></el-input>
 			<el-input type="password" v-model="loginInfoVo.password" placeholder="请输入密码"></el-input>
 			<br/><el-button type="primary" v-on:click="login">登录</el-button><br/>
@@ -86,20 +86,9 @@
 		width: 320px;
 	}
 
-
-
-	input {
-		display: block;
-		width: 250px;
-		height: 40px;
-		line-height: 40px;
-		margin: 0 auto;
-		margin-bottom: 10px;
-		outline: none;
-		border: 1px solid #888;
-		padding: 10px;
-		box-sizing: border-box;
-		}
+	.tishiText{
+		color: red;
+	}
 	
 	span {
 		cursor: pointer;

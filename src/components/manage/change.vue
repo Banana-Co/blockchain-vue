@@ -1,12 +1,12 @@
 <template>
 	
 	<div class="wrap">
-		<center><el-card class="box-card">
-			<p v-show="showTishi">{{tishi}}</p>
+		<center><el-card class="box-card ">
+			<p v-show="showTishi" class="tishiText">{{tishi}}</p>
 			<h3>用户名: {{name}}</h3>
-			<el-input type="password" v-model="loginInfoVo.password0" placeholder="请输入旧密码"></el-input>
-			<el-input type="password" v-model="loginInfoVo.password1" placeholder="请输入新密码"></el-input>
-			<el-input type="password" v-model="loginInfoVo.password2" placeholder="请确认新密码"></el-input>
+			<div><el-input type="password" v-model="loginInfoVo.password0" placeholder="请输入旧密码"></el-input></div><br/>
+			<div><el-input type="password" v-model="loginInfoVo.password1" placeholder="请输入新密码"></el-input></div><br/>
+			<div><el-input type="password" v-model="loginInfoVo.password2" placeholder="请确认新密码"></el-input></div><br/>
 			<el-button plain @click="change">修改密码</el-button>
 			<div >
 				<br/><span @click="$router.back(-1)">返回</span>
@@ -61,6 +61,9 @@
 							}else if (successResponse.data.code === 400) {
 								this.tishi = "密码错误"
 								this.showTishi = true
+							}else if (successResponse.data.code === 402) {
+								this.tishi = "输入不合法"
+								this.showTishi = true
 							}
 						})
 						.catch(failResponse => {})
@@ -76,12 +79,12 @@
 		text-align: center;
 	}
 
-
-	p {
+	.box-card {
+	  width: 360px;
+	}
+	.tishiText{
 		color: red;
 	}
-	
-
 
 	span {
 		cursor: pointer;
