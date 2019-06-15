@@ -157,14 +157,12 @@
 					})
 					.then(successResponse => {
 						this.responseResult = JSON.stringify(successResponse.data)
-						var myDate = new Date();
 						if (successResponse.data.code === 200) {
 							// if(this.signInfoVo.user_name===this.partyA){
 							// 	this.$axios.post('http://111.231.66.49:3000/api/PartyAsignTransaction', {
 							// 		contract: this.signInfoVo.message_id.toString(),
 							// 		partyA:this.signInfoVo.user_name,
-							// 		transactionId:this.signInfoVo.message_id.toString(),
-							// 		timestamp:myDate.toUTCString()
+							// 		transactionId:this.signInfoVo.message_id.toString()+'@'+this.signInfoVo.user_name,
 							// 	}).catch(function(error) {
 							// 		console.log(error);
 							// 	})
@@ -173,12 +171,10 @@
 							// 	this.$axios.post('http://111.231.66.49:3000/api/PartyBsignTransaction', {
 							// 		contract: this.signInfoVo.message_id.toString(),
 							// 		partyB:this.signInfoVo.user_name,
-							// 		transactionId:this.signInfoVo.message_id.toString(),
-							// 		timestamp:myDate.toUTCString()
+							// 		transactionId:this.signInfoVo.message_id.toString()+'@'+this.signInfoVo.user_name,
 							// 	}).catch(function(error) {
 							// 		console.log(error);
 							// 	})
-							// 	console.log(myDate.toUTCString())
 							// }else{
 							// 	console.log('fail')
 							// }
