@@ -58,6 +58,7 @@
 					.then(successResponse => {
 						this.responseResult = JSON.stringify(successResponse.data)
 						if (successResponse.data.code === 200) {
+							
 							setCookie('username', this.loginInfoVo.username, 1000 * 60)
 								this.$router.push('/messageFlow')
 						} else if (successResponse.data.code === 300) {
