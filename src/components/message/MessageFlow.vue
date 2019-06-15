@@ -252,6 +252,9 @@
 			// 	})
 			// },
 			importModel(id){
+				if(id==''){
+					id=0;
+				}
 				this.$axios
 					.get(`/getModel/${id}`)
 					.then(successResponse => {
