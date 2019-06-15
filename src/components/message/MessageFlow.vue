@@ -47,7 +47,7 @@
 		</el-pagination>
 
 		<el-dialog title="合同信息" :visible.sync="dialogFormVisible" width="70%">
-			模板：<el-select v-model="tem" clearable filterable placeholder="请选择" @change="importModel(tem)">
+			模板：<el-select v-model="tem" clearable filterable placeholder="请选择" @change="importModel(tem)" >
 				<el-option v-for="item in options3" :key="item.value" :label="item.label" :value="item.value">
 				</el-option>
 			</el-select>
@@ -237,6 +237,7 @@
 		methods: {
 			disable1(value){
 				this.options1.forEach(item => {
+					item.disabled=false;
 					if (item.user_name==value) {
 						item.disabled=true;
 					}
@@ -244,6 +245,7 @@
 			},
 			disable2(value){
 				this.options2.forEach(item => {
+					item.disabled=false;
 					if (item.user_name==value) {
 						item.disabled=true;
 					}
