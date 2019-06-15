@@ -46,17 +46,19 @@
 		 @current-change="handleCurrentChange">
 		</el-pagination>
 
-		<el-dialog title="合同信息" :visible.sync="dialogFormVisible" width="70%" >
-			<el-form :model="form" >
+		<el-dialog title="合同信息" :visible.sync="dialogFormVisible" width="70%">
+			模板：<el-select v-model="tem" clearable placeholder="请选择" @change="importModel(tem)">
+				<el-option v-for="item in options3" :key="item.value" :label="item.label" :value="item.value">
+				</el-option>
+			</el-select>
+			<el-form :model="form">
 				<el-form-item label="合同标题">
 					<el-input type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="请输入合同标题" v-model="form.title">
 					</el-input>
 				</el-form-item>
 				<el-form-item label="合同内容">
 					<br />
-				<mavon-editor v-model="form.content"/>
-					<!-- <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 10}" placeholder="请输入合同内容" v-model="form.content">
-					</el-input> -->
+					<mavon-editor v-model="form.content" />
 				</el-form-item>
 			</el-form>
 			<div slot="footer" class="dialog-footer">
@@ -71,8 +73,9 @@
 				<el-option v-for="item in options2" :key="item.user_name" :label="item.user_name" :value="item.user_name">
 				</el-option>
 			</el-select>
+			
 		</el-dialog>
-		
+
 	</div>
 </template>
 
@@ -94,7 +97,7 @@
 	.new-bottom {
 		width: 128px;
 	}
-	
+
 	.title {
 		font: "agency fb";
 		font-size: 40px;
@@ -190,9 +193,33 @@
 				},
 				options1: [],
 				options2: [],
+				options3: [{
+					value: '1',
+					label: '房屋买卖合同1'
+				}, {
+					value: '2',
+					label: '房屋买卖合同2'
+				}, {
+					value: '3',
+					label: '劳动合同'
+				}, {
+					value: '4',
+					label: '劳务派遣合同'
+				}, {
+					value: '5',
+					label: '个人借款合同'
+				}, {
+					value: '6',
+					label: '土地租赁合同'
+				}, {
+					value: '7',
+					label: '简易租房合同'
+				}],
+				tem: ''
 			}
-		},
-		mounted() {
+		}
+	,
+	mounted() {
 			/*页面挂载获取保存的cookie值，渲染到页面上*/
 			let uname = getCookie('username')
 			this.form.author = uname
@@ -224,6 +251,18 @@
 			// 		}
 			// 	})
 			// },
+			importModel(id){
+				this.$axios
+					.get(`/getModel/${id}`)
+					.then(successResponse => {
+						this.responseResult = JSON.stringify(successResponse.data);
+						this.form.title = successResponse.data.title;
+						this.form.content =successResponse.data.content;
+					})
+					.catch(function(error) {
+						console.log(error);
+					})
+			},
 			handleCurrentChange: function(currentPage) {
 				this.pageNum = currentPage;
 				this.getMessagePage();
@@ -273,11 +312,11 @@
 					})
 			},
 			handleRowClick: function(row) {
-				if(row.partyA==this.form.author||row.partyB==this.form.author){
+				if (row.partyA == this.form.author || row.partyB == this.form.author) {
 					this.$router.push({
 						path: `messageDetail/${row.id}`
 					})
-				}else{
+				} else {
 					this.$router.push({
 						path: `messageBrief/${row.id}`
 					})
