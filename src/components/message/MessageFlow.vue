@@ -47,7 +47,7 @@
 		</el-pagination>
 
 		<el-dialog title="合同信息" :visible.sync="dialogFormVisible" width="70%">
-			模板：<el-select v-model="tem" clearable placeholder="请选择" @change="importModel(tem)">
+			模板：<el-select v-model="tem" clearable filterable placeholder="请选择" @change="importModel(tem)">
 				<el-option v-for="item in options3" :key="item.value" :label="item.label" :value="item.value">
 				</el-option>
 			</el-select>
@@ -65,12 +65,12 @@
 				<el-button @click="dialogFormVisible = false">关 闭</el-button>
 				<el-button type="primary" @click="addMessage" :disabled="saveButtonDisabled">发 布</el-button>
 			</div>
-			甲方：<el-select v-model="form.value1" clearable placeholder="请选择">
-				<el-option v-for="item in options1" :key="item.user_name" :label="item.user_name" :value="item.user_name">
+			甲方：<el-select v-model="form.value1" clearable filterable placeholder="请选择" @change="disable2(form.value1)">
+				<el-option v-for="item in options1" :key="item.user_name" :label="item.user_name" :value="item.user_name" :disabled="item.disabled">
 				</el-option>
 			</el-select>
-			&nbsp;&nbsp;&nbsp;乙方：<el-select v-model="form.value2" clearable placeholder="请选择">
-				<el-option v-for="item in options2" :key="item.user_name" :label="item.user_name" :value="item.user_name">
+			&nbsp;&nbsp;&nbsp;乙方：<el-select v-model="form.value2" clearable filterable placeholder="请选择" @change="disable1(form.value2)">
+				<el-option v-for="item in options2" :key="item.user_name" :label="item.user_name" :value="item.user_name" :disabled="item.disabled">
 				</el-option>
 			</el-select>
 			
@@ -235,22 +235,20 @@
 			})
 		},
 		methods: {
-			// disable1(value){
-			// 	console.log(value)
-			// 	this.options1.forEach(item => {
-			// 		if (item.user_name==value) {
-			// 			console.log(item)
-			// 			this.options1.splice(item)
-			// 		}
-			// 	})
-			// },
-			// disable2(value){
-			// 	this.options2.forEach(item => {
-			// 		if (item.user_name==value) {
-			// 			item.saveButtonDisabled
-			// 		}
-			// 	})
-			// },
+			disable1(value){
+				this.options1.forEach(item => {
+					if (item.user_name==value) {
+						item.disabled=true;
+					}
+				})
+			},
+			disable2(value){
+				this.options2.forEach(item => {
+					if (item.user_name==value) {
+						item.disabled=true;
+					}
+				})
+			},
 			importModel(id){
 				if(id==''){
 					id=0;
