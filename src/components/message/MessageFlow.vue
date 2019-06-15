@@ -65,11 +65,11 @@
 				<el-button @click="dialogFormVisible = false">关 闭</el-button>
 				<el-button type="primary" @click="addMessage" :disabled="saveButtonDisabled">发 布</el-button>
 			</div>
-			<el-select v-model="form.value1" clearable placeholder="甲方">
+			甲方：<el-select v-model="form.value1" clearable placeholder="请选择">
 				<el-option v-for="item in options1" :key="item.user_name" :label="item.user_name" :value="item.user_name">
 				</el-option>
 			</el-select>
-			<el-select v-model="form.value2" clearable placeholder="乙方">
+			&nbsp;&nbsp;&nbsp;乙方：<el-select v-model="form.value2" clearable placeholder="请选择">
 				<el-option v-for="item in options2" :key="item.user_name" :label="item.user_name" :value="item.user_name">
 				</el-option>
 			</el-select>
