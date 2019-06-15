@@ -46,8 +46,8 @@
 		 @current-change="handleCurrentChange">
 		</el-pagination>
 
-		<el-dialog title="合同信息" :visible.sync="dialogFormVisible">
-			<el-form :model="form">
+		<el-dialog title="合同信息" :visible.sync="dialogFormVisible" width="70%" >
+			<el-form :model="form" >
 				<el-form-item label="合同标题">
 					<el-input type="textarea" :autosize="{ minRows: 1, maxRows: 1}" placeholder="请输入合同标题" v-model="form.title">
 					</el-input>
@@ -94,7 +94,7 @@
 	.new-bottom {
 		width: 128px;
 	}
-
+	
 	.title {
 		font: "agency fb";
 		font-size: 40px;

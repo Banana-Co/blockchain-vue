@@ -21,12 +21,12 @@
 				<div class="party">
 					<el-row>
 						<el-col :span="12">
-							<div>甲方: {{partyA}} <el-switch v-model="value1" disabled>
+							<div>甲方: {{partyA}} | 签署状态： <el-switch v-model="value1" disabled active-color="#13ce66" inactive-color="#ff4949">
 							</el-switch></div>
 							
 						</el-col>
 						<el-col :span="12">
-							<div>乙方: {{partyB}} <el-switch v-model="value2" disabled>
+							<div>乙方: {{partyB}} | 签署状态： <el-switch v-model="value2" disabled active-color="#13ce66" inactive-color="#ff4949">
 							</el-switch></div>
 							
 						</el-col>
@@ -34,7 +34,7 @@
 				</div>
 
 				<div >
-					<mavon-editor  v-model="content" :subfield="false" :defaultOpen="defaultData" :toolbarsFlag="false" :boxShadow="false" @change="changeData" />
+					<mavon-editor v-model="content" :subfield="false" :defaultOpen="defaultData" :toolbarsFlag="false" :boxShadow="false" @change="changeData" />
 				</div>
 				<div class="grid-content">
 					<el-button @click="sign"> 签署 </el-button>
@@ -89,7 +89,7 @@
 	}
 
 	.message-detail {
-		width: 48rem;
+		width: 960px;
 	}
 
 	.box-card {

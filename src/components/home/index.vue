@@ -105,11 +105,7 @@ import { setCookie,getCookie,delCookie } from '../../assets/js/cookie.js'
   	padding: 10px;
   	box-sizing: border-box;
   }
-  
-  p {
-  	color: red;
-  }
-  
+
   
   span {
   	cursor: pointer;
