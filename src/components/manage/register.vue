@@ -70,12 +70,12 @@
 					.then(successResponse => {
 						this.responseResult = JSON.stringify(successResponse.data)
 						if (successResponse.data.code === 200) {
-							this.$axios.post('http://111.231.66.49:3000/api/User', {
-								pid: this.loginInfoVo.username,
-								name: this.loginInfoVo.username
-							}).catch(function(error) {
-								console.log(error);
-							})
+							// this.$axios.post('http://111.231.66.49:3000/api/User', {
+							// 	pid: this.loginInfoVo.username,
+							// 	name: this.loginInfoVo.username
+							// }).catch(function(error) {
+							// 	console.log(error);
+							// })
 							setCookie('username', this.loginInfoVo.username, 1000 * 60)
 							this.$router.push('/messageFlow')
 						} else if (successResponse.data.code === 201) {
