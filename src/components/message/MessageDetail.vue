@@ -158,16 +158,15 @@
 					.then(successResponse => {
 						this.responseResult = JSON.stringify(successResponse.data)
 						if (successResponse.data.code === 200) {
-							// if(this.signInfoVo.user_name===this.partyA){
-							// 	this.$axios.post('http://111.231.66.49:3000/api/PartyAsignTransaction', {
-							// 		contract: this.signInfoVo.message_id.toString(),
-							// 		partyA:this.signInfoVo.user_name,
-							// 		transactionId:this.signInfoVo.message_id.toString()+'@'+this.signInfoVo.user_name,
-							// 	}).catch(function(error) {
-							// 		console.log(error);
-							// 	})
-							// 	console.log(myDate.toUTCString())
-							// }else if(this.signInfoVo.user_name===this.partyB){
+							if(this.signInfoVo.user_name===this.partyA){
+								this.$axios.post('http://111.231.66.49:3000/api/PartyAsignTransaction', {
+									contract: this.signInfoVo.message_id.toString(),
+									partyA:this.signInfoVo.user_name,
+									transactionId:this.signInfoVo.message_id.toString()+'@'+this.signInfoVo.user_name,
+								}).catch(function(error) {
+									console.log(error);
+								})
+							}// else if(this.signInfoVo.user_name===this.partyB){
 							// 	this.$axios.post('http://111.231.66.49:3000/api/PartyBsignTransaction', {
 							// 		contract: this.signInfoVo.message_id.toString(),
 							// 		partyB:this.signInfoVo.user_name,
@@ -184,7 +183,7 @@
 						}else if (successResponse.data.code === 400) {
 							alert("非法操作")
 						}
-						//location.reload();
+						location.reload();
 					})
 					
 					.catch(failResponse => {})

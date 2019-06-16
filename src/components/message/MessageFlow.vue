@@ -295,19 +295,19 @@
 					})
 					.then(res => {
 						if (res.data.id != 0) {
-							// this.$axios.post('http://111.231.66.49:3000/api/Contract', {
-							// 	cid: res.data.id.toString(),
-							// 	createDate: res.data.createDate,
-							// 	author:res.data.author,
-							// 	title:res.data.title,
-							// 	content:res.data.content,
-							// 	partyA:res.data.partyA,
-							// 	partyB:res.data.partyB,
-							// 	pAsigned:false,
-							// 	pBsigned:false
-							// }).catch(function(error) {
-							// 	console.log(error);
-							// })
+							this.$axios.post('http://111.231.66.49:3000/api/Contract', {
+								cid: res.data.id.toString(),
+								createDate: res.data.createDate,
+								author:res.data.author,
+								title:res.data.title,
+								content:res.data.content,
+								partyA:res.data.partyA,
+								partyB:res.data.partyB,
+								pAsigned:false,
+								pBsigned:false
+							}).catch(function(error) {
+								console.log(error);
+							})
 							this.dialogFormVisible = false
 							this.$alert('您的合同已发布', '成功', {
 								confirmButtonText: '确定',
@@ -319,7 +319,7 @@
 							this.value2 = ''
 							this.getMessagePage();
 						} else {
-							this.$alert('标题内容不能为空')
+							this.$alert('请完成所有内容的填写')
 						}
 					})
 					.catch(function(error) {
