@@ -161,22 +161,20 @@
 							if(this.signInfoVo.user_name===this.partyA){
 								this.$axios.post('http://111.231.66.49:3000/api/PartyAsignTransaction', {
 									contract: this.signInfoVo.message_id.toString(),
-									partyA:this.signInfoVo.user_name,
-									transactionId:this.signInfoVo.message_id.toString()+'@'+this.signInfoVo.user_name,
+									partyA: this.signInfoVo.user_name,
 								}).catch(function(error) {
 									console.log(error);
 								})
-							}// else if(this.signInfoVo.user_name===this.partyB){
-							// 	this.$axios.post('http://111.231.66.49:3000/api/PartyBsignTransaction', {
-							// 		contract: this.signInfoVo.message_id.toString(),
-							// 		partyB:this.signInfoVo.user_name,
-							// 		transactionId:this.signInfoVo.message_id.toString()+'@'+this.signInfoVo.user_name,
-							// 	}).catch(function(error) {
-							// 		console.log(error);
-							// 	})
-							// }else{
-							// 	console.log('fail')
-							// }
+							}else if(this.signInfoVo.user_name===this.partyB){
+								this.$axios.post('http://111.231.66.49:3000/api/PartyBsignTransaction', {
+									contract: this.signInfoVo.message_id,
+									partyB:this.signInfoVo.user_name,
+								}).catch(function(error) {
+									console.log(error);
+								})
+							}else{
+								console.log('fail')
+							}
 							alert("签署成功")
 						} else if (successResponse.data.code === 201) {
 							alert("已签署过该合约")
